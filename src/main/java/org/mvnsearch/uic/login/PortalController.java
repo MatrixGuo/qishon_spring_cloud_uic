@@ -17,27 +17,27 @@ import org.springframework.web.bind.annotation.ResponseBody;
  */
 @Controller
 public class PortalController {
-    @Autowired
-    private AccountManager accountManager;
-    @GetMapping("/")
-    @ResponseBody
-    public String index(){
-        return accountManager.findByEmail("123@qishon.com");
-    }
-    //不能引用Domain内部的组件，如repository, service, infrastructure等计划规划
-
 //    @Autowired
-//    private ApplicationEventPublisher eventPublisher;
-//
+//    private AccountManager accountManager;
 //    @GetMapping("/")
 //    @ResponseBody
-//    public String index() {
-//        return "Hello World!!!";
+//    public String index(){
+//        return accountManager.findByEmail("123@qishon.com");
 //    }
-//
-//    @GetMapping("/welcome")
-//    public String welcome(Model model) {
-//        model.addAttribute("nick", "雷卷");
-//        return "welcome";
-//    }
+    //不能引用Domain内部的组件，如repository, service, infrastructure等计划规划
+
+    @Autowired
+    private ApplicationEventPublisher eventPublisher;
+
+    @GetMapping("/")
+    @ResponseBody
+    public String index() {
+        return "Hello World!!!";
+    }
+
+    @GetMapping("/welcome")
+    public String welcome(Model model) {
+        model.addAttribute("nick", "雷卷");
+        return "welcome";
+    }
 }
